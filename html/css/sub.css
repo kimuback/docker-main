@@ -1,0 +1,247 @@
+﻿/* ==========================================================================
+   SUB PAGES STYLE (Register, Login, Board) - Mangyul Cafe Theme
+   ========================================================================== */
+
+/* 전체 폰트 통일 */
+* {
+  font-family: 'Gowun Dodum', sans-serif !important;
+  box-sizing: border-box;
+}
+
+/* --- 상단 배너 이미지 (1200px 너비 확장 및 중앙 정렬) --- */
+#img_mem, #img_cen {
+  width: 100%;
+  max-width: 1200px;
+  height: 140px;
+  border-radius: 12px;
+  margin: 0 auto 20px auto;
+  background-color: #ffb74d; /* 주황/망고 톤 따뜻한 배경 */
+  background-size: cover;
+  display: block;
+}
+
+/* --- 서브 페이지 레이아웃 (좌측 메뉴 + 우측 컨텐츠) --- */
+#nav_sub {
+  width: 200px;
+  float: left;
+  margin-top: 20px;
+}
+
+#nav_sub ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#nav_sub ul li a {
+  color: #555;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 12px 10px;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+#nav_sub ul li a:hover {
+  color: #ff6f00;
+  padding-left: 15px;
+  background-color: #fff8f0;
+  border-radius: 6px;
+}
+
+/* 우측 본문 영역 (너비 940px로 확장) */
+#article_sub {
+  width: 940px;
+  float: right;
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+
+#article_sub h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ff6f00;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+/* --- 회원가입 (register.php) --- */
+#article_sub .fieldset_mem {
+  width: 100%;
+  padding: 30px;
+  margin: 20px 0;
+  border: 1px solid #ffe0b2;
+  background-color: #fffdfa;
+  border-radius: 12px;
+}
+
+#article_sub .fieldset_mem legend {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff6f00;
+  padding: 0 10px;
+}
+
+#article_sub .fieldset_mem label {
+  float: left;
+  width: 160px;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #555;
+  font-size: 15px;
+}
+
+#article_sub .fieldset_mem input {
+  width: 300px;
+  padding: 10px 14px;
+  margin: 5px 0;
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+#article_sub .fieldset_mem input:focus {
+  border-color: #ff6f00;
+  box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.15);
+}
+
+#buttons_mem {
+  width: 100%;
+  margin: 30px 0;
+  text-align: center;
+}
+
+#buttons_mem .submit_mem,
+#buttons_mem .cancel_mem,
+#form_login input[type="submit"],
+#form_login input[type="button"] {
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border: none;
+  width: 130px;
+  height: 45px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: all 0.2s;
+}
+
+#buttons_mem .submit_mem,
+#form_login input[type="submit"] {
+  background-color: #ff6f00; /* 파란색 -> 망고 오렌지색으로 변경 */
+}
+
+#buttons_mem .submit_mem:hover,
+#form_login input[type="submit"]:hover {
+  background-color: #e66000;
+}
+
+#buttons_mem .cancel_mem,
+#form_login input[type="button"] {
+  background-color: #888;
+}
+
+#buttons_mem .cancel_mem:hover,
+#form_login input[type="button"]:hover {
+  background-color: #666;
+}
+
+/* --- 로그인 (login.php) --- */
+#form_login {
+  width: 500px;
+  margin: 30px auto;
+  padding: 40px 30px;
+  border: 1px solid #ffe0b2;
+  background-color: #fffdfa;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+#form_login label {
+  font-size: 16px;
+  font-weight: bold;
+  float: left;
+  width: 100px;
+  margin: 10px 0;
+  color: #444;
+  text-align: left;
+}
+
+#form_login input[type="text"],
+#form_login input[type="password"] {
+  width: 280px;
+  padding: 10px 12px;
+  margin: 5px 0;
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+#form_login input[type="text"]:focus,
+#form_login input[type="password"]:focus {
+  border-color: #ff6f00;
+  box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.15);
+}
+
+/* --- 게시판 목록 (list.php) --- */
+#table_list {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#table_list th {
+  background-color: #fff4e6;
+  color: #d95300;
+  font-weight: bold;
+  padding: 14px 8px;
+  border-bottom: 2px solid #ffcc80;
+  font-size: 15px;
+}
+
+#table_list td {
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding: 12px 8px;
+  font-size: 15px;
+  color: #555;
+}
+
+.subject a {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.subject a:hover {
+  color: #ff6f00;
+}
+
+#page_control a:hover {
+  color: #ff6f00;
+  background-color: #fff4e6;
+}
+
+/* --- 글쓰기 (write.php) --- */
+.td1 {
+  width: 120px;
+  text-align: center;
+  background-color: #fff4e6;
+  color: #d95300;
+  font-weight: bold;
+  height: 40px;
+  border-radius: 6px;
+}
+
+.td2 input:focus, #write_tr3 textarea:focus {
+  border-color: #ff6f00;
+}

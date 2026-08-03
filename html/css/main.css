@@ -1,0 +1,205 @@
+/* ==========================================================================
+   MAIN PAGE STYLE - Mangyul (Mango & Tangerine Dessert Cafe)
+   ========================================================================== */
+
+body {
+  background-color: #FFFBEB; /* 따뜻하고 부드러운 크림 베이지 */
+  color: #451A03;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* 메인 컨테이너 폭을 1200px로 넓힘 */
+#wrap {
+  background-color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.08);
+  width: 1200px;
+  min-height: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  width: 1140px;
+  height: 160px;
+  margin-left: 30px;
+  border-bottom: 2px solid #FEF3C7;
+}
+
+.login {
+  float: right;
+  margin-top: 25px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.login a {
+  color: #78350F;
+  font-weight: 500;
+}
+
+.login a:hover {
+  color: #F97316; /* 귤 오렌지 컬러 */
+}
+
+.logo {
+  margin-top: 35px;
+  margin-left: 10px;
+  float: left;
+}
+
+.logo a {
+  color: #EA580C;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo a:hover {
+  color: #D97706;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#nav_index {
+  width: 700px;
+  float: left;
+  margin-top: 55px;
+  margin-left: 40px;
+}
+
+#nav_index ul {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#nav_index ul li {
+  float: left;
+  margin: 0 35px 0 0;
+}
+
+#nav_index ul li a {
+  color: #451A03;
+  padding-bottom: 8px;
+}
+
+#nav_index ul li a:hover {
+  color: #F97316;
+  border-bottom: 3px solid #F97316;
+}
+
+#article_index {
+  margin-left: 30px;
+  width: 1140px;
+}
+
+/* 메인 비주얼 박스 (디저트 소개 영역) */
+#security {
+  background: linear-gradient(135deg, #FEF3C7 0%, #FFEDD5 100%);
+  border-radius: 16px;
+  margin: 30px 0;
+  height: 200px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+}
+
+.solution,
+.control,
+.consulting {
+  width: 30%;
+  float: left;
+  margin: 10px 1.6%;
+  box-sizing: border-box;
+}
+
+.solution h3,
+.control h3,
+.consulting h3 {
+  margin-top: 0;
+  color: #9A3412;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.solution p,
+.control p,
+.consulting p {
+  margin-top: 12px;
+  padding: 0 10px;
+  color: #78350F;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+#news,
+#notices {
+  width: 46%;
+  float: left;
+  height: 220px;
+  margin: 20px 2%;
+}
+
+#news {
+  margin-left: 1%;
+}
+
+#news h3,
+#notices h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #9A3412;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #F97316;
+  height: auto;
+  background: none;
+}
+
+#notices table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#notices table td {
+  padding: 12px 5px;
+  border-bottom: 1px dotted #FDE68A;
+  font-size: 14px;
+  color: #78350F;
+}
+
+footer {
+  width: 1140px;
+  margin-left: 30px;
+  margin-top: 40px;
+  padding-top: 25px;
+  border-top: 2px solid #FEF3C7;
+}
+
+#copyright {
+  font-size: 13px;
+  color: #B45309;
+  float: left;
+  margin: 10px 0;
+}
+
+#social {
+  float: right;
+  margin-right: 10px;
+}
