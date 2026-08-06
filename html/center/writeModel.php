@@ -18,7 +18,12 @@ $tmp_file = $_FILES['upfile']['tmp_name'];
 // echo "tmp_file : " . $tmp_file . "<br>";
 
 // 데이터 베이스 연결 (데이터베이스 아이피주소, 데이터베이스 계정명, 패스워드, 데이터베이스 이름)
-$link = mysqli_connect(getenv("DB_HOST") ?: "localhost", "care", "123123", "care") or die('연결 실패');
+$link = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASSWORD"),
+    getenv("DB_NAME")
+) or die('연결 실패');
 
 $query = "INSERT INTO center(id, subject, content, date, hit, filename) ";
 $query = $query . "VALUES('$id','$subject', '$content', '$date', 0, '$upfile')";

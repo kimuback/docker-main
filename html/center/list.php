@@ -1,7 +1,12 @@
 <?php
 
 include "../header.php";
-$link = mysqli_connect(getenv("DB_HOST") ?: 'localhost', 'care', '123123', 'care');
+$link = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASSWORD"),
+    getenv("DB_NAME")
+) or die('연결 실패');
 $mode = $_GET['mode'];
 $find = $_GET['find'];
 $data = $_GET['data'];
