@@ -1,6 +1,11 @@
 <?php
     //데이터베이스 연결(데이터베이스 위치(ip), 데이터베이스 id, 데이터베이스 암호, 데이터베이스 이름);
-    $link = mysqli_connect(getenv("DB_HOST") ?: "localhost", "care","123123", "care") or die('연결 실패');
+   $link = mysqli_connect(
+    getenv("DB_HOST") ?: "localhost",
+    getenv("DB_USER") ?: "admin",
+    getenv("DB_PASSWORD") ?: "",
+    getenv("DB_NAME") ?: "care"
+) or die('연결 실패');
     
     $id = 'admin';
     $query = "SELECT * FROM member WHERE id='$id'";
