@@ -4,7 +4,12 @@
     $num = $_GET['num'];
     
     // 데이터 베이스에 연결
-    $link = mysqli_connect(getenv("DB_HOST") ?: "localhost", "care", "123123", "care") or die('연결 실패');
+    $link = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASSWORD"),
+    getenv("DB_NAME")
+) or die('연결 실패');
     
     // SELECT 쿼리문 문자열 변수에 저장.
     $query = "SELECT * FROM center WHERE num='$num'";

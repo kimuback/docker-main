@@ -1,10 +1,15 @@
 <?php
 
 include "../header.php";
-$link = mysqli_connect(getenv("DB_HOST") ?: 'localhost', 'care', '123123', 'care');
-$mode = $_GET['mode'];
-$find = $_GET['find'];
-$data = $_GET['data'];
+$link = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASSWORD"),
+    getenv("DB_NAME")
+) or die('연결 실패');
+$mode = $_GET['mode'] ?? '';
+$find = $_GET['find'] ?? '';
+$data = $_GET['data'] ?? '';
 if($mode == "search"){
     if($data == ""){
         ?>
@@ -24,7 +29,7 @@ $result = mysqli_query($link, $query);
 $totalNumRows = mysqli_num_rows($result);
 $scroll = 3;
 $totalPage = ceil($totalNumRows / $scroll);
-$selectPage = $_GET['page'];
+$selectPage = $_GET['page'] ?? 1;
 if(! $selectPage)
     $selectPage = 1;
 

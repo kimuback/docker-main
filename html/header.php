@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
     <title>Mangyul - Mango & Tangerine Dessert Cafe</title>
@@ -100,7 +101,7 @@
                             <!-- [좌측] 로고 & 메인 메뉴 -->
                             <div class="left-header">
                                 <div class="logo"> 
-                                    <h1><a href="/index.php">🥭🍊 Mangyul</a></h1> 
+                                    <h1><a href="/index.php">🥭Mangyul🍊 </a></h1> 
                                 </div>
                                 
                                 <nav id="nav_index">
@@ -115,8 +116,7 @@
 
                             <!-- [우측] 로그인 / 회원가입 (한 라인에 평행 배치) -->
                             <div class="login">
-                            <?php 
-                            session_start();
+                            <?php
                             if(!isset($_SESSION['id']) || $_SESSION['id'] == ""){
                             ?>
                                     <a href="/member/login.php"> Login </a> 

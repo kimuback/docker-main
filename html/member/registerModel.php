@@ -20,7 +20,12 @@ if($pw != $pwCheck){
 }
 
 //데이터베이스 연결(데이터베이스 위치(ip), 데이터베이스 id, 데이터베이스 암호, 데이터베이스 이름);
-$link = mysqli_connect(getenv("DB_HOST") ?: "localhost", "care", "123123", "care") or die('연결 실패');
+$link = mysqli_connect(
+    getenv("DB_HOST"),
+    getenv("DB_USER"),
+    getenv("DB_PASSWORD"),
+    getenv("DB_NAME")
+) or die('연결 실패');
 
 /*
  * # 아이디 중복 체크 #
