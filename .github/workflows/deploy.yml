@@ -36,15 +36,15 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "Image pushed: $ECR_REPOSITORY:$IMAGE_TAG"
 
-      - name: Update deployment image in infra repo
+      - name: Update deployment manifest in infra repo
         env:
-          GH_PAT: ${{ secrets.INFRA_REPO_TOKEN }}   # git-terraform-infra 쓰기권한 PAT
+          GH_PAT: ${{ secrets.INFRA_REPO_TOKEN }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          git clone https://x-access-token:${GH_PAT}@github.com/kimuback/git-terraform-infra.git infra
+          git clone --depth 1 https://x-access-token:${GH_PAT}@github.com/kimuback/git-terraform-infra.git infra
           cd infra
           sed -i "s#project3-app:.*#project3-app:${IMAGE_TAG}#" 08-k8s-apps/k8s-manifests/deployment.yaml
-          git config user.name  "ci-bot"
-          git config user.email "ci@bot"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -am "deploy: image ${IMAGE_TAG}"
           git push
