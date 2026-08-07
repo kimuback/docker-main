@@ -101,7 +101,7 @@
                             <!-- [좌측] 로고 & 메인 메뉴 -->
                             <div class="left-header">
                                 <div class="logo"> 
-                                    <h1><a href="/index.php">🥭🍊 Mangyul</a></h1> 
+                                    <h1><a href="/index.php">🥭Mangyul🍊 </a></h1> 
                                 </div>
                                 
                                 <nav id="nav_index">
