@@ -44,6 +44,8 @@ jobs:
           git clone --depth 1 https://x-access-token:${GH_PAT}@github.com/kimuback/git-terraform-infra.git infra
           cd infra
           sed -i "s#project3-app:.*#project3-app:${IMAGE_TAG}#" 08-k8s-apps/k8s-manifests/deployment.yaml
+          WAF_ARN=$(aws wafv2 list-web-acls --scope REGIONAL --region ${AWS_REGION} --query "WebACLs[?Name=='dev-service-web-acl'].ARN" --output text)
+          sed -i "s#\(wafv2-acl-arn:\).*#\1 ${WAF_ARN}#" 08-k8s-apps/k8s-manifests/ingress.yaml
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -am "deploy: image ${IMAGE_TAG}"
