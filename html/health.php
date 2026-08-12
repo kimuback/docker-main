@@ -1,3 +1,4 @@
 <?php
 http_response_code(200);
-echo "OK";
+header('Content-Type: text/plain');
+echo "ok";
