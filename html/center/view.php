@@ -44,16 +44,16 @@
 <article id="article_sub">
 	<h1>게시글 보기</h1>
 		<div id="view_title">
-			<div class="title1"> <?=$subject?> </div>
-			<div><?=$id?> | <?=$date?> | 조회 수: <?=$hit?> </div>
+			<div class="title1"> <?=h($subject)?> </div>
+			<div><?=h($id)?> | <?=h($date)?> | 조회 수: <?=(int)$hit?> </div>
 		</div>
 		
 		<div id="view_content">
-			<?=$content?> 
+			<?=nl2br(h($content))?>
 		</div>
 		
 		<div id="view_file">
-		첨부파일 : <a href="download.php?filename=<?=$filename?>"><?=$filename?> </a>
+		첨부파일 : <a href="download.php?filename=<?=urlencode($filename)?>"><?=h($filename)?> </a>
 		</div>
 		
 		<div id="buttons">

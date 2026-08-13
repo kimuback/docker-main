@@ -60,13 +60,13 @@ $start = ($selectPage-1) * $scroll;
 			    $row = mysqli_fetch_assoc($result);
 			?>
     			<tr>
-    				<td><?=$row['num']?></td>
+    				<td><?=(int)$row['num']?></td>
     					<td class="subject">
-    					<a href="view.php?num=<?=$row['num']?>"><?=$row['subject']?></a>
+    					<a href="view.php?num=<?=(int)$row['num']?>"><?=h($row['subject'])?></a>
     				</td>
-    				<td><?=$row['id']?></td>
-    				<td><?=$row['date']?></td>
-    				<td><?=$row['hit']?></td>
+    				<td><?=h($row['id'])?></td>
+    				<td><?=h($row['date'])?></td>
+    				<td><?=(int)$row['hit']?></td>
     			</tr>
     		<?php 
              }
