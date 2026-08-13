@@ -19,6 +19,7 @@ if($_SESSION['id'] == ""){
 	<h1>게시글 작성</h1>
 	<div class="line"></div>
 		<form action="writeModel.php" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="csrf" value="<?=h($_SESSION['csrf'])?>">
     		<table>
     			<tr id="write_tr1">
     				<td class="td1">작성자</td>

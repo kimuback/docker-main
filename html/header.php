@@ -3,6 +3,9 @@ session_start();
 if (!function_exists('h')) {
     function h($s) { return htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8'); }
 }
+if (empty($_SESSION['csrf'])) {          // ← header.php — 토큰 생성 추가
+    $_SESSION['csrf'] = bin2hex(random_bytes(32));
+}
 ?>
 <html>
 <head>

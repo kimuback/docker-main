@@ -42,6 +42,7 @@ if($_SESSION['id'] == ""){
 <article id="article_sub">
 <h1>회원 수정</h1>
 	<form action="modifyModel.php" method="post" name="f" id="form_reg">
+		<input type="hidden" name="csrf" value="<?=h($_SESSION['csrf'])?>">
 		<fieldset class="fieldset_mem">
 		<legend>필수 정보</legend>
 			<label>아이디</label><input type="text" name="id" id="id" value="<?=$_SESSION['id'] ?>" disabled>
@@ -50,16 +51,16 @@ if($_SESSION['id'] == ""){
 			<div class="clear"></div>
 			<label>패스워드 확인</label><input type="password" name="pwCheck" id="pwCheck">
 			<div class="clear"></div>
-			<label>이름</label><input type="text" name="name" id="name" value="<?=$_SESSION['name'] ?>">
+			<label>이름</label><input type="text" name="name" id="name" value="<?=h($_SESSION['name']) ?>">
 			<div class="clear"></div>
 		</fieldset>
 		<fieldset class="fieldset_mem">
 		<legend>부가 정보</legend>
-			<label>핸드폰</label><input type="text" name="mobile" value="<?=$_SESSION['mobile'] ?>">
+			<label>핸드폰</label><input type="text" name="mobile" value="<?=h($_SESSION['mobile']) ?>">
 			<div class="clear"></div>
-			<label>주소</label><input type="text" name="address" value="<?=$_SESSION['address'] ?>">
+			<label>주소</label><input type="text" name="address" value="<?=h($_SESSION['address']) ?>">
 			<div class="clear"></div>
-			<label>이메일</label><input type="text" name="email" value="<?=$_SESSION['email'] ?>">
+			<label>이메일</label><input type="text" name="email" value="<?=h($_SESSION['email']) ?>">
 			<div class="clear"></div>
 		</fieldset>
 		<div id="buttons_mem">

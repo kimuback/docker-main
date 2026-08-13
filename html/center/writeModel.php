@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!hash_equals($_SESSION['csrf'] ?? '', $_POST['csrf'] ?? '')) {
+    http_response_code(403);
+    exit('CSRF 검증 실패');
+}
 $id = $_SESSION['id'];
 if($id == ""){
     echo "<script>location.href='/member/login.php'; </script>";
@@ -29,9 +33,10 @@ $link = mysqli_connect(
     getenv("DB_NAME")
 ) or die('연결 실패');
 
-$query = "INSERT INTO center(id, subject, content, date, hit, filename) ";
-$query = $query . "VALUES('$id','$subject', '$content', '$date', 0, '$storedName')";
-mysqli_query($link, $query);
+$stmt = mysqli_prepare($link, "INSERT INTO center(id, subject, content, date, hit, filename) VALUES(?, ?, ?, ?, 0, ?)");
+mysqli_stmt_bind_param($stmt, "sssss", $id, $subject, $content, $date, $storedName);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
 mysqli_close($link);
 
 // 업로드 파일을 S3에 저장 (Pod 로컬이 아닌 공유 저장소)

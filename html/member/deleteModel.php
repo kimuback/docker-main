@@ -1,61 +1,39 @@
 <?php
-// delete.php에서 전달한 데이터를 받아서 변수에 저장.
 session_start();
+if (!hash_equals($_SESSION['csrf'] ?? '', $_POST['csrf'] ?? '')) {   // CSRF 검증 (네가 넣은 것 유지)
+    http_response_code(403);
+    exit('CSRF 검증 실패');
+}
 $id = $_SESSION['id'];
 $pw = $_POST['pw'];
 $pwCheck = $_POST['pwCheck'];
 
-// 전달받은 데이터 검증.
-// 검증 : 데이터가 입력되어 있는지, 두 패스워드가 같은지 검증
-if(! ($pw and $pwCheck)){
-?>
-	<script>
-		alert('두 비밀번호는 필수 정보입니다.'); history.go(-1);
-	</script>
-<?php
+if (! ($pw and $pwCheck)) {
+    echo "<script>alert('두 비밀번호는 필수 정보입니다.'); history.go(-1);</script>";
     exit;
 }
-if($pw != $pwCheck){
-?>    
-	<script>alert('두 비밀번호를 일치하여 입력하세요'); history.go(-1);</script>
-<?php 
+if ($pw != $pwCheck) {
+    echo "<script>alert('두 비밀번호를 일치하여 입력하세요'); history.go(-1);</script>";
     exit;
 }
 
-// 데이터 베이스에 연결
-$link = mysqli_connect(
-    getenv("DB_HOST"),
-    getenv("DB_USER"),
-    getenv("DB_PASSWORD"),
-    getenv("DB_NAME")
-) or die('연결 실패');
+$link = mysqli_connect(getenv("DB_HOST"),getenv("DB_USER"),getenv("DB_PASSWORD"),getenv("DB_NAME")) or die('연결 실패');
 
-// 데이터베이스에 저장된 패스워드와 사용자가 입력한 패스워드를 같은지 확인.
-$query = "SELECT pw FROM member WHERE id='$id'";
-$result = mysqli_query($link, $query);
-$row = mysqli_fetch_assoc($result);
+// 저장된 해시 조회 (Prepared)
+$stmt = mysqli_prepare($link, "SELECT pw FROM member WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "s", $id);
+mysqli_stmt_execute($stmt);
+$row = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
 
-if($pw == $row['pw']){
-    $query = "DELETE FROM member WHERE id='$id'";
-    // 위 쿼리문을 담고 있는 변수를 데이터베이스에 전달.
-    mysqli_query($link, $query);
-    // 데이터베이스 연결 닫기
+if ($row && password_verify($pw, $row['pw'])) {          // 🔑 해시 검증으로 변경
+    $del = mysqli_prepare($link, "DELETE FROM member WHERE id = ?");
+    mysqli_stmt_bind_param($del, "s", $id);
+    mysqli_stmt_execute($del);
     mysqli_close($link);
-}else{
-?> 
-	<script>alert('저장된 비밀번호와 일치하여 입력하세요'); history.go(-1);</script>
-<?php    
+} else {
     mysqli_close($link);
+    echo "<script>alert('저장된 비밀번호와 일치하여 입력하세요'); history.go(-1);</script>";
     exit;
 }
 ?>
-<!-- 스크립트를 구성해서 회원삭제 출력 후 logout.php로 이동. -->
 <script>alert('회원 삭제'); location.href='logout.php';</script>
-
-
-
-
-
-
-
-

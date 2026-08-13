@@ -34,6 +34,7 @@ if($_SESSION['id'] == ""){
 	<h1>회원 탈퇴</h1>
 	
 	<form action="deleteModel.php" method="post" id="form_login" name="f">
+		<input type="hidden" name="csrf" value="<?=h($_SESSION['csrf'])?>">
 		<label>아이디</label> <?=$_SESSION['id'] ?><div class="clear"></div>
 		<label>패스워드</label><input type="password" name="pw" id="pw"><div class="clear"></div>
 		<label>패스워드 확인</label><input type="password" name="pwCheck" id="pwCheck"><div class="clear"></div>

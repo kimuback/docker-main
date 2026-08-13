@@ -1,6 +1,10 @@
 <?php
 // 사용자의 입력 값을 전달 받아 변수에 저장
 session_start();
+if (!hash_equals($_SESSION['csrf'] ?? '', $_POST['csrf'] ?? '')) {
+    http_response_code(403);
+    exit('CSRF 검증 실패');
+}
 if($_SESSION['id'] == ""){
     echo "<script>location.href='login.php';</script>";
     exit;
