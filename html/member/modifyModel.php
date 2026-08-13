@@ -33,12 +33,11 @@ $link = mysqli_connect(
     getenv("DB_NAME")
 ) or die('연결 실패');
 
-// 업데이트 쿼리문 문자열 변수에 저장.
-$query = "UPDATE member SET pw='$pw', name='$name', mobile='$mobile', 
-email='$email', address='$address' WHERE id='$id'";
-
-// 데이터베이스에 쿼리문 문자열 전달
-mysqli_query($link, $query);
+$hash = password_hash($pw, PASSWORD_DEFAULT);   // 🔑 해시
+$stmt = mysqli_prepare($link, "UPDATE member SET pw=?, name=?, mobile=?, email=?, address=? WHERE id=?");
+mysqli_stmt_bind_param($stmt, "ssssss", $hash, $name, $mobile, $email, $address, $id);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_close($stmt);
 
 // 데이터베이스 연결 닫기
 mysqli_close($link);
