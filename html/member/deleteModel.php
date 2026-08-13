@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!hash_equals($_SESSION['csrf'] ?? '', $_POST['csrf'] ?? '')) {   // CSRF 검증 (네가 넣은 것 유지)
+if (empty($_SESSION['csrf']) || !hash_equals($_SESSION['csrf'], $_POST['csrf'] ?? '')) {
     http_response_code(403);
     exit('CSRF 검증 실패');
 }
