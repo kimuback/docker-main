@@ -3,6 +3,9 @@
 {
   echo "session.save_handler = redis"
   echo "session.save_path = \"tcp://${REDIS_HOST}:6379\""
+  echo "session.cookie_httponly = 1"
+  echo "session.cookie_secure = 1"
+  echo "session.cookie_samesite = Lax"
 } > /usr/local/etc/php/conf.d/session-redis.ini
 
 exec apache2-foreground
