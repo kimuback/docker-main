@@ -23,6 +23,12 @@ $tmp_file = $_FILES['upfile']['tmp_name'];
 $storedName = "";
 if (!empty($upfile)) {
     $safeName = basename($upfile);
+    $ext = strtolower(pathinfo($safeName, PATHINFO_EXTENSION));   // 확장자 추출(소문자)
+    $allowed = ['jpg','jpeg','png','gif','pdf','hwp','txt'];       // 허용 목록
+    if (!in_array($ext, $allowed, true)) {
+        http_response_code(400);
+        exit('허용되지 않은 파일 형식입니다.');
+    }
     $storedName = date('YmdHis') . '_' . $safeName;
 }
 
